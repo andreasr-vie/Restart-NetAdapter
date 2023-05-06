@@ -1,1 +1,1 @@
-Get-NetAdapter -InterfaceIndex ((Get-NetIPAddress | Where-Object {($_.IPAddress -notlike "127.0.0.1") -and ($_.IPAddress -notlike "::1")}).InterfaceIndex | Select-Object -Unique) | Restart-NetAdapter
+Get-NetAdapter -InterfaceIndex ((Get-NetIPAddress | Where-Object {($_.IPAddress -notlike "127.0.0.1") -and ($_.IPAddress -notlike "::1") -and ($_.IPAddress -notlike "169.*") -and ($_.IPAddress -notlike "fe80:*")}).InterfaceIndex | Select-Object -Unique) | Restart-NetAdapter
